@@ -1,0 +1,40 @@
+public class String_methods {
+    public static void main(String[] args) throws IOException
+    {
+        String str="我在马路边捡到一分钱";
+        //1.charAt(int index)获取指定位置的字符
+        System.out.println(str.charAt(1));//输出 在
+        //2.toCharArray()获取对应的字符数组
+        char ch[]=str.toCharArray();
+        System.out.println(ch);//输出 我
+        //3.subString 截取子字符串
+        String s=str.substring(2);//截取从下标为2的字符开始的字符串，在马路边捡到一分钱
+        System.out.println(s);
+        s=str.substring(0,2 );//截取从下标为0的字符开始到下标的2字符结束(取不到下标为2,即左闭右开)的字符串
+        System.out.println(s);
+        //4.split,根据分隔符进行分隔
+        String str1="我 在 马 路 边 捡 到 一 分 钱";
+        String subSentences[]=str1.split(" ",3);//limit参数表示分割成几部分
+        for (String sub : subSentences)
+            System.out.println(sub);
+        //5.trim去掉首尾空格
+        String str2="  把它交到警察叔叔手里面   ";
+        System.out.println(str2.trim());//输出 把它交到警察叔叔手里面
+        //6.toLowerCase 全部变成小写 toUpperCase 全部变成大写
+        String str3="ILoveDogCat";
+        System.out.println(str3.toLowerCase());//ilovedogcat
+        System.out.println(str3.toUpperCase());//ILOVEDOGCAT
+        //7.indexOf 判断字符或者子字符串出现的位置,contains 是否包含子字符串
+        String sentence = "盖伦,在进行了连续8次击杀后,获得了超神 的称号";
+        System.out.println(sentence.indexOf('8')); //字符第一次出现的位置
+        System.out.println(sentence.indexOf("超神")); //字符串第一次出现的位置
+        System.out.println(sentence.lastIndexOf("了")); //字符串最后出现的位置
+        System.out.println(sentence.indexOf(',',5)); //从位置5开始，出现的第一次,的位置
+        System.out.println(sentence.contains("击杀")); //是否包含字符串"击杀"
+        //8.replaceAll 替换所有的 replaceFirst 只替换第一个
+        String temp = sentence.replaceAll("击杀", "被击杀"); //替换所有的
+        temp = temp.replaceAll("超神", "超鬼");
+        System.out.println(temp);
+        temp = sentence.replaceFirst(",","");//只替换第一个
+        System.out.println(temp);
+    }
