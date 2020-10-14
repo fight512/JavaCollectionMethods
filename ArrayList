@@ -1,0 +1,70 @@
+package Study;
+
+import java.util.ArrayList;
+
+/**
+ * @Description
+ * @Author zdk
+ * @Date 2020/10/13 18:42
+ */
+
+class Dog{
+    private String name;
+    private int age;
+    private double weight;
+    Dog() {}
+    Dog(String name) {this.name=name;}
+}
+
+public class ArrayList_methods {
+    public static void main(String[] args)
+    {
+//1.不显示的声明array的类型,array中便可以存入不同类型的值
+        ArrayList array=new ArrayList();
+        array.add("第一");
+        array.add(1);//将值添加到最后面
+        array.add(0, "第二");//将值添加到指定下标的位置
+        System.out.println(array);//输出[第二, 第一, 1]
+//2. 判断一个对象是否包含在容器中,返回true or false,判断标准是 是否是同一个对象而不是一个属性相同
+        System.out.println(array.contains("第一"));//返回true
+
+        Dog wc=new Dog("旺财");
+        Dog lf=new Dog("来福");
+        ArrayList array1=new ArrayList();
+        array1.add(wc);array1.add(lf);
+        System.out.println(array1.contains(new Dog("旺财")));//false
+        System.out.println(array1.contains(wc));//true
+//3.获取指定下标的对象,输出 第一;超出下标范围依旧会报错 和普通数组一致
+        System.out.println("下标为1的元素为:"+array.get(1));
+//4.获取指定对象的位置(下标),判断对象方法与contains方法一致
+        System.out.println("字符串 第二 的下标为:"+array.indexOf("第二"));//输出0
+//5.remove()可根据下标或者具体对象从Array中删除对应对象
+        array.remove(2);System.out.println("删除下标2对应元素后的array为:"+array);//[第二, 第一]
+        array.remove("第一");System.out.println("删除元素\"第一\"后的array为:"+array);//[第二]
+//6.set(index,object)用于替换指定下标位置的元素
+        array.set(0, "第一");System.out.println("将下标为0的元素替换为\"第一\"后的array为:"+array);//[第一]
+        System.out.println("array的大小为:"+array.size());
+//7.将ArrayList转换为数组
+        ArrayList<Integer> ar=new ArrayList<Integer>();
+        for(int i=0;i<5;i++)
+            ar.add(i+1);
+        Integer[] arr=new Integer[ar.size()];
+        ar.toArray(arr);
+        for(Integer i:arr)
+            System.out.print(i+" ");
+//8.将另一个容器里的所有元素都加进来
+        ArrayList<Integer> ar1=new ArrayList<Integer>();
+        for(int i=0;i<5;i++)
+            ar1.add(i+1);
+        System.out.print("\n加入ar1之前ar为:");
+        for(Integer i:ar)
+            System.out.print(i+" ");
+        ar.addAll(ar1);
+        System.out.print("\n加入ar1后ar为:");
+        for(Integer i:ar)
+            System.out.print(i+" ");
+//9.清空一个ArrayList
+        ar.clear();
+//10.
+    }
+}
