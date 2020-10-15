@@ -1,0 +1,29 @@
+import java.util.LinkedList;
+
+/**
+ * @Description
+ * @Author zdk
+ * @Date 2020/10/14 20:54
+ */
+public class LinkedList_DequeList_methods {
+    public static void main(String[] args)
+    {
+        //除了实现了List接口外，LinkedList还实现了双向链表结构Deque，可以很方便的在头尾插入删除数据
+        LinkedList<String> ll=new LinkedList<String>();
+        ll.addFirst("一");//在最前面插入
+        ll.addLast("二");ll.addLast("三");ll.addLast("四");//在最后面插入
+        System.out.println(ll);
+        //查看最前面的元素
+        System.out.println("最前面的元素为:"+ll.getFirst());
+        //查看最后面的英雄
+        System.out.println("最后面的元素为:"+ll.getLast());
+        //查看不会导致元素被删除
+        System.out.println(ll);
+        //取出最前面的元素
+        System.out.println(ll.removeFirst());
+        //取出最后面的元素
+        System.out.println(ll.removeLast());
+        //取出会导致元素被删除
+        System.out.println("取出最前面和最后面的元素后的链表为:"+ll);//左为前右为后
+    }
+}
