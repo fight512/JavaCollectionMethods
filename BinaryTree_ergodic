@@ -1,0 +1,92 @@
+package Study.Data_Structure;
+
+/**
+ * @Description
+ * @Author zdk
+ * @Date 2020/10/15 20:14
+ */
+import java.util.LinkedList;
+
+
+//递归实现二叉树的先中后序遍历和层次遍历
+public class BinaryTreeTest {
+
+    public static void main(String[] args) {
+        Node node = new Node();
+        for(int i = 0; i < 10; ++i){
+            int x = (int)(Math.random()*100);
+            node.add(x);
+        }
+        node.preOrderTraverse();
+        System.out.println("***");
+        node.inOrderTraverse();
+        System.out.println("***");
+        node.postOrderTraverse();
+        System.out.println("***");
+        node.levelTraverse();
+    }
+}
+
+
+class Node{
+    public Node leftNode;
+    public Node rightNode;
+    public int value;
+
+    public Node() {
+        value = Integer.MAX_VALUE;
+    }
+    // 创建排序二叉树
+    public void add(int v){
+        if(value == Integer.MAX_VALUE){
+            value = v;
+            return;
+        }
+        else {
+            if(v < value){
+                if(leftNode == null){
+                    leftNode = new Node();
+                }
+                leftNode.add(v);
+            }
+            else {
+                if(rightNode == null){
+                    rightNode = new Node();
+                }
+                rightNode.add(v);
+            }
+        }
+    }
+    // 先序遍历
+    public void preOrderTraverse(){
+        System.out.println(this.value);
+        if(leftNode != null) leftNode.preOrderTraverse();
+        if(rightNode != null) rightNode.preOrderTraverse();
+    }
+    // 中序遍历
+    public void inOrderTraverse(){
+        if(leftNode != null) leftNode.inOrderTraverse();
+        System.out.println(this.value);
+        if(rightNode != null) rightNode.inOrderTraverse();
+    }
+    //  后序遍历
+    public void postOrderTraverse(){
+        if(leftNode != null) leftNode.postOrderTraverse();
+        if(rightNode != null) rightNode.postOrderTraverse();
+        System.out.println(this.value);
+    }
+    //  层序遍历
+    public void levelTraverse(){
+        LinkedList<Node> q = new LinkedList<>();
+        q.push(this);
+        while (!q.isEmpty()){
+            Node node = q.peek();
+            q.pop();
+            System.out.println(node.value);
+            if(node.leftNode != null)
+                q.push(node.leftNode);
+            if(node.rightNode != null)
+                q.push(node.rightNode);
+        }
+    }
+}
