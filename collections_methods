@@ -1,0 +1,48 @@
+package Study;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+/**
+ * @Description
+ * @Author zdk
+ * @Date 2020/10/16 15:06
+ */
+
+//collections是容器的工具类
+public class Collections_methods {
+    public static void main(String[] args)
+    {
+        List<Integer>list=new ArrayList<>();
+        for(int i=0;i<10;i++)
+            list.add(i+1);
+        System.out.println(list);
+        //1.reverse使容器的数据反转
+        Collections.reverse(list);
+        System.out.println("反转后的list为："+list);
+        //2.shuffle 使容器数据混淆
+        Collections.shuffle(list);
+        System.out.println("混淆后的list为："+list);
+        //3.sort 给容器数据排序
+        Collections.sort(list);
+        System.out.println("升序排序后的list为："+list);//默认升序
+        Collections.sort(list, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return -1;//o2-o1 return 负数则为降序排序
+            }
+        });
+        System.out.println("降序排序后的list为："+list);
+        //4.swap 交换下标为i j的两个容器元素
+        Collections.swap(list, 1, 0);
+        System.out.println("交换后的list为："+list);
+        //5.rotate 把List中的数据，向右滚动指定单位的长度
+        Collections.rotate(list,2);
+        System.out.println("将容器中的数据向右滚动2个单位后的list为："+list);
+        //6.synchronizedList 把非线程安全的List转换为线程安全的List'
+//List<Integer> synchronizedNumbers = (List<Integer>) Collections.synchronizedList(list);
+
+    }
+}
